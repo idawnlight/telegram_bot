@@ -27,7 +27,7 @@ module TelegramBot
     end
 
     def <<(btns)
-      a = Array.new(btns.size)
+      a = Array(InlineKeyboardButton).new(btns.size)
       btns.each do |btn|
         a << btn
       end
