@@ -56,6 +56,7 @@ module TelegramBot
     # @updates_timeout
     def initialize(@name : String,
                    @token : String,
+                   @logger = Logger.new(STDOUT).tap { |l| l.level = Logger::DEBUG },
                    @whitelist : Array(String)? = nil,
                    @blacklist : Array(String)? = nil,
                    @updates_timeout : Int32? = nil,
