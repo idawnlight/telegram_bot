@@ -14,7 +14,6 @@ require "./api_exception.cr"
 
 module TelegramBot
   abstract class Bot
-    @logger : Logger?
 
     # handle messages
     def handle(message : Message)
@@ -56,7 +55,7 @@ module TelegramBot
     # @updates_timeout
     def initialize(@name : String,
                    @token : String,
-                   @logger = Logger.new(STDOUT).tap { |l| l.level = Logger::DEBUG },
+                   @logger : Logger? = nil,
                    @whitelist : Array(String)? = nil,
                    @blacklist : Array(String)? = nil,
                    @updates_timeout : Int32? = nil,
