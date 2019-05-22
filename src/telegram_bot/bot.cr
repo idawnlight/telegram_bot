@@ -14,8 +14,6 @@ require "./api_exception.cr"
 
 module TelegramBot
   abstract class Bot
-    @logger : Logger?
-
     # handle messages
     def handle(message : Message)
       raise "message handler is not implemented"
@@ -51,11 +49,13 @@ module TelegramBot
 
     # @name username of the bot
     # @token
+    # @logger
     # @whitelist
     # @blacklist
     # @updates_timeout
     def initialize(@name : String,
                    @token : String,
+                   @logger : Logger? = nil,
                    @whitelist : Array(String)? = nil,
                    @blacklist : Array(String)? = nil,
                    @updates_timeout : Int32? = nil,
