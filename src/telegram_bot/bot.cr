@@ -281,11 +281,12 @@ module TelegramBot
     def send_photo(chat_id : Int | String,
                    photo : ::File | String,
                    caption : String? = nil,
+                   parse_mode : String? = nil,
                    disable_notification : Bool? = nil,
                    reply_to_message_id : Int32? = nil,
                    reply_markup : ReplyMarkup = nil) : Message?
       reply_markup = reply_markup.try(&.to_json)
-      res = def_request "sendPhoto", chat_id, photo, caption, disable_notification, reply_to_message_id, reply_markup
+      res = def_request "sendPhoto", chat_id, photo, caption, parse_mode, disable_notification, reply_to_message_id, reply_markup
       Message.from_json res.to_json if res
     end
 
