@@ -28,8 +28,6 @@ module TelegramBot
         else
           proc.call(message, params)
         end
-      else
-        raise "there is no command handler for `/#{cmd}`"
       end
     end
 
