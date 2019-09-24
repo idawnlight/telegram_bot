@@ -317,6 +317,7 @@ module TelegramBot
                      disable_notification : Bool? = nil,
                      reply_to_message_id : Int32? = nil,
                      reply_markup : ReplyMarkup = nil) : Message?
+      reply_markup = reply_markup.try(&.to_json)
       res = def_request "sendSticker", chat_id, sticker, disable_notification, reply_to_message_id, reply_markup
       Message.from_json res.to_json if res
     end
