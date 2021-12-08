@@ -3,7 +3,7 @@ require "json"
 module TelegramBot
   class User
     FIELDS = {
-      id:            Int32,
+      id:            Int64,
       is_bot:        Bool,
       first_name:    String,
       last_name:     {type: String, nilable: true},

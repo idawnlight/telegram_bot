@@ -8,7 +8,7 @@ module TelegramBot
       phone_number:          String,
       first_name:            String,
       last_name:             {type: String, nilable: true},
-      user_id:               {type: Int32, nilable: true},
+      user_id:               {type: Int64, nilable: true},
       reply_markup:          {type: InlineKeyboardMarkup, nilable: true},
       input_message_content: {type: InputMessageContent, nilable: true},
       thumb_url:             {type: String, nilable: true},

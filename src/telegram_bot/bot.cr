@@ -434,7 +434,7 @@ module TelegramBot
       res.as_bool if res
     end
 
-    def get_user_profile_photos(user_id : Int32,
+    def get_user_profile_photos(user_id : Int64,
                                 offset : Int32? = nil,
                                 limit : Int32? = nil)
       res = def_force_request "getUserProfilePhotos", user_id, offset, limit
@@ -442,20 +442,20 @@ module TelegramBot
     end
 
     def kick_chat_member(chat_id : Int | String,
-                         user_id : Int,
+                         user_id : Int64,
                          until_date : Int? = nil)
       res = def_request "kickChatMember", chat_id, user_id, until_date
       res.as_bool if res
     end
 
     def unban_chat_member(chat_id : Int | String,
-                          user_id : Int32)
+                          user_id : Int64)
       res = def_request "unbanChatMember", chat_id, user_id
       res.as_bool if res
     end
 
     def restrict_chat_member(chat_id : Int | String,
-                             user_id : Int,
+                             user_id : Int64,
                              until_date : Int? = nil,
                              can_send_messages : Bool? = nil,
                              can_send_media_messages : Bool? = nil,
@@ -466,7 +466,7 @@ module TelegramBot
     end
 
     def promote_chat_member(chat_id : Int | String,
-                            user_id : Int,
+                            user_id : Int64,
                             can_change_info : Bool? = nil,
                             can_post_messages : Bool? = nil,
                             can_edit_messages : Bool? = nil,
@@ -545,7 +545,7 @@ module TelegramBot
     end
 
     def get_chat_member(chat_id : Int | String,
-                        user_id : Int32)
+                        user_id : Int64)
       res = def_request "getChatMember", chat_id, user_id
       ChatMember.from_json res.not_nil!.to_json
     end
@@ -692,7 +692,7 @@ module TelegramBot
       Message.from_json res.to_json if res
     end
 
-    def set_game_score(user_id : Int32,
+    def set_game_score(user_id : Int64,
                        score : Int32,
                        force : Bool? = nil,
                        disable_edit_message : Bool? = nil,
@@ -709,7 +709,7 @@ module TelegramBot
       end
     end
 
-    def get_game_high_scores(user_id : Int32,
+    def get_game_high_scores(user_id : Int64,
                              chat_id : Int | String | Nil = nil,
                              message_id : Int32? = nil,
                              inline_message_id : String? = nil) : Array(GameHighScore)
@@ -774,12 +774,12 @@ module TelegramBot
       StickerSet.from_json res.to_json if res
     end
 
-    def upload_sticker_file(user_id : Int, png_sticker : ::File)
+    def upload_sticker_file(user_id : Int64, png_sticker : ::File)
       res = def_request "uploadStickerFile", user_id, png_sticker
       File.from_json res.to_json if res
     end
 
-    def create_new_sticker_set(user_id : Int,
+    def create_new_sticker_set(user_id : Int64,
                                name : String,
                                title : String,
                                png_sticker : ::File | String,
@@ -791,7 +791,7 @@ module TelegramBot
       res.as_bool if res
     end
 
-    def add_sticker_to_set(user_id : Int,
+    def add_sticker_to_set(user_id : Int64,
                            name : String,
                            png_sticker : ::File | String,
                            emojis : String,

@@ -6,7 +6,7 @@ module TelegramBot
       phone_number: String,
       first_name:   String,
       last_name:    {type: String, nilable: true},
-      user_id:      {type: Int32, nilable: true},
+      user_id:      {type: Int64, nilable: true},
     })
   end
 end
